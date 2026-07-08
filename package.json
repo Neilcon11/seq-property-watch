@@ -1,0 +1,14 @@
+{
+  "name": "seq-property-watch",
+  "version": "1.0.0",
+  "description": "South East Queensland property watch dashboard for land, home-and-land packages, and townhouses.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {}
+}
