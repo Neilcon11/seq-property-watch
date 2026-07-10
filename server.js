@@ -2,8 +2,8 @@ import http from 'node:http';
 import crypto from 'node:crypto';
 
 const PORT = Number(process.env.PORT || 3000);
-const AUTO_CHECK_ENABLED = process.env.AUTO_CHECK_ENABLED === 'true';
-const CHECK_INTERVAL_MINUTES = Math.max(5, Number(process.env.CHECK_INTERVAL_MINUTES || 30));
+const AUTO_CHECK_ENABLED = process.env.AUTO_CHECK_ENABLED === 'true' || Boolean(process.env.GMAIL_CLIENT_ID && process.env.GMAIL_CLIENT_SECRET && process.env.GMAIL_REFRESH_TOKEN);
+const CHECK_INTERVAL_MINUTES = Math.max(5, Number(process.env.CHECK_INTERVAL_MINUTES || 5));
 const CHECK_SECRET = process.env.CHECK_SECRET || '';
 const LAND_SOURCE_URLS = (process.env.ONLINE_LAND_SOURCE_URLS || 'https://www.stockland.com.au/residential/qld/aura/land-for-sale,https://www.stockland.com.au/residential/qld/aura,https://harmony.avid.com.au/land-for-sale/,https://www.realestate.com.au/buy/property-residential+land-in-sunshine+coast,+qld/list-1,https://www.domain.com.au/sale/sunshine-coast-qld/land/').split(',').map(x => x.trim()).filter(Boolean);
 const GMAIL_QUERY = process.env.GMAIL_QUERY || 'newer_than:2d (land OR "home and land" OR townhouse OR "house and land" OR "land release") ("Sunshine Coast" OR Brisbane OR "Moreton Bay" OR Queensland OR SEQ)';
